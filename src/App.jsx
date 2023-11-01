@@ -1,9 +1,8 @@
+import "./App.css";
+import ImageGallery from "./pages/ImageGallery";
+
 const App = () => {
-  return (
-    <div>
-      <h2>Hello</h2>
-    </div>
-  );
+  return <ImageGallery />;
 };
 
 export default App;

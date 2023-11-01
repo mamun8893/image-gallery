@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.main-root{
+  width: 100%;
+}
+body{
+  background-color: #eee;
+}
+
+.container{
+  max-width: 1320px;
+  margin: auto;
+}
+.image-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+      background: #fff;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.featured-image {
+  border: 2px solid #ffcc00; /* Add a border to the featured image */
+  margin: 10px;
+}
+
+.featured-image img {
+  width: 400px; /* Adjust the size of the featured image as needed */
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-item {
+  margin: 10px;
+  width: 15%;
+   transition: transform 0.2s, border 0.2s;
+}
+
+.image-item img{
+  max-width: 100%;
+  height: auto;
+}
+button {
+  margin: 20px;
+}
