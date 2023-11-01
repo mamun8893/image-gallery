@@ -51,10 +51,15 @@ const ImageGallery = () => {
     }
   };
 
+  //get first 7 image
+
+  const column1Images = images.slice(0, 7);
+  const column2Images = images.slice(7);
+
   return (
     <div className="container">
       <div className="image-gallery">
-        <div
+        {/* <div
           className={`featured-image ${
             draggedImage === images[0] ? "dragged" : ""
           }`}
@@ -64,9 +69,50 @@ const ImageGallery = () => {
           onDrop={(e) => handleDrop(e, images[0])}
         >
           {images[0] && <img src={images[0].src} alt={`Featured Image`} />}
+        </div> */}
+        <div className="column1">
+          <div
+            className={`featured-image image-item ${
+              draggedImage === images[0] ? "dragged" : ""
+            }`}
+            draggable
+            onDragStart={(e) => handleDragStart(e, images[0])}
+            onDragOver={handleDragOver}
+            onDrop={(e) => handleDrop(e, column1Images[0])}
+          >
+            {column1Images[0] && (
+              <img src={column1Images[0].src} alt={`Featured Image`} />
+            )}
+          </div>
+          <div className="gallery-item-wrap">
+            {column1Images.slice(1).map((image) => (
+              <div
+                key={image.id}
+                className={`image-item ${
+                  selectedImages.includes(image) ? "selected" : ""
+                }`}
+                draggable
+                onDragStart={(e) => handleDragStart(e, image)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, image)}
+                onClick={() => {
+                  if (selectedImages.includes(image)) {
+                    setSelectedImages(
+                      selectedImages.filter((selected) => selected !== image)
+                    );
+                  } else {
+                    setSelectedImages([...selectedImages, image]);
+                  }
+                }}
+              >
+                <img src={image.src} alt={`Image ${image.id}`} />
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="image-list">
-          {images.slice(1).map((image) => (
+
+        <div className="column2">
+          {column2Images.map((image) => (
             <div
               key={image.id}
               className={`image-item ${
@@ -90,6 +136,7 @@ const ImageGallery = () => {
             </div>
           ))}
         </div>
+
         {/* <div className="button-container">
         <button onClick={handleDelete}>Delete Selected</button>
       </div> */}
