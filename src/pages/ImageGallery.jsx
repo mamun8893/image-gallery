@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GalleryItem from "../components/GalleryItem";
 
 const ImageGallery = () => {
   const [images, setImages] = useState([
@@ -59,17 +60,6 @@ const ImageGallery = () => {
   return (
     <div className="container">
       <div className="image-gallery">
-        {/* <div
-          className={`featured-image ${
-            draggedImage === images[0] ? "dragged" : ""
-          }`}
-          draggable
-          onDragStart={(e) => handleDragStart(e, images[0])}
-          onDragOver={handleDragOver}
-          onDrop={(e) => handleDrop(e, images[0])}
-        >
-          {images[0] && <img src={images[0].src} alt={`Featured Image`} />}
-        </div> */}
         <div className="column1">
           <div
             className={`featured-image image-item ${
@@ -86,54 +76,30 @@ const ImageGallery = () => {
           </div>
           <div className="gallery-item-wrap">
             {column1Images.slice(1).map((image) => (
-              <div
+              <GalleryItem
                 key={image.id}
-                className={`image-item ${
-                  selectedImages.includes(image) ? "selected" : ""
-                }`}
-                draggable
-                onDragStart={(e) => handleDragStart(e, image)}
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, image)}
-                onClick={() => {
-                  if (selectedImages.includes(image)) {
-                    setSelectedImages(
-                      selectedImages.filter((selected) => selected !== image)
-                    );
-                  } else {
-                    setSelectedImages([...selectedImages, image]);
-                  }
-                }}
-              >
-                <img src={image.src} alt={`Image ${image.id}`} />
-              </div>
+                image={image}
+                setSelectedImages={setSelectedImages}
+                selectedImages={selectedImages}
+                handleDragStart={handleDragStart}
+                handleDragOver={handleDragOver}
+                handleDrop={handleDrop}
+              />
             ))}
           </div>
         </div>
 
         <div className="column2">
           {column2Images.map((image) => (
-            <div
+            <GalleryItem
               key={image.id}
-              className={`image-item ${
-                selectedImages.includes(image) ? "selected" : ""
-              }`}
-              draggable
-              onDragStart={(e) => handleDragStart(e, image)}
-              onDragOver={handleDragOver}
-              onDrop={(e) => handleDrop(e, image)}
-              onClick={() => {
-                if (selectedImages.includes(image)) {
-                  setSelectedImages(
-                    selectedImages.filter((selected) => selected !== image)
-                  );
-                } else {
-                  setSelectedImages([...selectedImages, image]);
-                }
-              }}
-            >
-              <img src={image.src} alt={`Image ${image.id}`} />
-            </div>
+              image={image}
+              setSelectedImages={setSelectedImages}
+              selectedImages={selectedImages}
+              handleDragStart={handleDragStart}
+              handleDragOver={handleDragOver}
+              handleDrop={handleDrop}
+            />
           ))}
         </div>
 
