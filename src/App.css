@@ -82,6 +82,7 @@ img {
   gap: 20px;
   margin-top: 20px;
   width: 100%;
+  align-items: flex-start;
 }
 
 .column2 .image-item {
@@ -152,6 +153,7 @@ img {
   border: 1px dotted #ddd;
   padding: 20px 0px;
   background-color: #eee;
+  min-height: 140px;
 
 }
 
@@ -191,6 +193,10 @@ img {
     width: 17%;
   }
 
+  .select-file {
+    min-height: 80px;
+  }
+
 }
 
 @media only screen and (max-width: 767px) {
@@ -209,6 +215,19 @@ img {
 
   .column2 .image-item {
     width: 16%;
+  }
+
+  .select-file {
+    min-height: 60px;
+    padding: 10px 0px;
+  }
+
+  .select-file h4 {
+    font-size: 12px;
+  }
+
+  .select-file img {
+    width: 20px;
   }
 }
 
@@ -244,5 +263,10 @@ img {
   .column1 .featured-image {
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .select-file {
+    min-height: 70px;
+
   }
 }
