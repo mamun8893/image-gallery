@@ -2,11 +2,11 @@
 
 const GalleryItem = ({
   image,
-  setSelectedImages,
-  selectedImages,
+  handleSelect,
   handleDragStart,
   handleDragOver,
   handleDrop,
+  selectedImages,
 }) => {
   return (
     <div
@@ -17,17 +17,11 @@ const GalleryItem = ({
       onDragStart={(e) => handleDragStart(e, image)}
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, image)}
-      onClick={() => {
-        if (selectedImages.includes(image)) {
-          setSelectedImages(
-            selectedImages.filter((selected) => selected !== image)
-          );
-        } else {
-          setSelectedImages([...selectedImages, image]);
-        }
-      }}
     >
       <img src={image.src} alt={`Image ${image.id}`} />
+      <div className="select-item-checkbox" onClick={() => handleSelect(image)}>
+        <input type="checkbox" checked={selectedImages.includes(image)} />
+      </div>
     </div>
   );
 };
