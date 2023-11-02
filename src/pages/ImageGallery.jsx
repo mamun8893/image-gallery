@@ -101,7 +101,7 @@ const ImageGallery = () => {
           <div className="column1">
             <div
               className={`featured-image image-item ${
-                draggedImage === images[0] ? "dragged" : ""
+                selectedImages.includes(images[0]) ? "selected" : ""
               }`}
               draggable
               onDragStart={(e) => handleDragStart(e, images[0])}
