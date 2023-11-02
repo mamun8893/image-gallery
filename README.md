@@ -1,4 +1,8 @@
-```
+# Image Gallery
+
+## Setup Instruction
+
+```bash
 step 1: clone the git repository
 step 2: run 'npm install'
 step 3: run 'npm run dev'
